@@ -1,4 +1,4 @@
-%A.3
+%A.3 
 
 function [lambda] = CH2MP2(R,C)
 
