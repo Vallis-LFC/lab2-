@@ -45,6 +45,134 @@ hold off;
 %S3:  = -1
 %S4: 1 = -1/5,   2 = -1 
 
+%c.3
+
+%S.1:
+% C3 code for h1
+u = @(t) 1.0*(t>=0);
+x = @(t) sin(5*t).*(u(t)-u(t-3));
+h = @(t) exp(t/5).*(u(t)-u(t-20));
+%B1 modified
+dtau = 0.005;
+tau = 0:dtau:20; ti=0;
+tvec = 0:0.1:20;
+y = NaN*zeros(1,length(tvec));
+for t = tvec,
+   ti = ti+1;
+   xh = x(t-tau).*h(tau);
+   lxh = length(xh);
+   y(ti)= sum(xh.*dtau);
+   %Approximation of convolution integral
+   subplot(2,1,1), plot(tau,h(tau), "k-",tau,x(t-tau),"k--",t,0,"ok")
+   axis([tau(1) tau(end) -2.0 2.5]);
+   patch([tau(1:end-1);tau(1:end-1);tau(2:end);tau(2:end)], ...
+   [zeros(1,lxh-1);xh(1:end-1);xh(2:end);zeros(1,lxh-1)],...
+   [.8 .8 .8], "edgecolor","none");
+   xlabel("\tau"); title("h(\tau) [solid], x(t-\tau) [dashed], " + ...
+       "h(\tau)x(t-\tau) [gray]");
+   c = get(gca, 'children'); set(gca, 'children', [c(2);c(3);c(4);c(1)]);
+   subplot(2,1,2),plot(tvec,y,"k",tvec(ti),y(ti),"ok");
+   xlabel("t"); ylabel("y(t) = \int h(\tau)x(t-\tau) d\tau");
+   axis([tau(1) tau(end) -1.0 2.0]); grid;
+   drawnow;
+end
+
+%S.2:
+% C3 code for h2
+u = @(t) 1.0*(t>=0);
+x = @(t) sin(5*t).*(u(t)-u(t-3));
+h = @(t) 4*exp(-t/5).*(u(t)-u(t-20));
+%B1 modified
+dtau = 0.005;
+tau = 0:dtau:20; ti=0;
+tvec = 0:0.1:20;
+y = NaN*zeros(1,length(tvec));
+for t = tvec,
+   ti = ti+1;
+   xh = x(t-tau).*h(tau);
+   lxh = length(xh);
+   y(ti)= sum(xh.*dtau);
+   %Approximation of convolution integral
+   subplot(2,1,1), plot(tau,h(tau), "k-",tau,x(t-tau),"k--",t,0,"ok")
+   axis([tau(1) tau(end) -2.0 2.5]);
+   patch([tau(1:end-1);tau(1:end-1);tau(2:end);tau(2:end)], ...
+   [zeros(1,lxh-1);xh(1:end-1);xh(2:end);zeros(1,lxh-1)],...
+   [.8 .8 .8], "edgecolor","none");
+   xlabel("\tau"); title("h(\tau) [solid], x(t-\tau) [dashed], " + ...
+       "h(\tau)x(t-\tau) [gray]");
+   c = get(gca, 'children'); set(gca, 'children', [c(2);c(3);c(4);c(1)]);
+   subplot(2,1,2),plot(tvec,y,"k",tvec(ti),y(ti),"ok");
+   xlabel("t"); ylabel("y(t) = \int h(\tau)x(t-\tau) d\tau");
+   axis([tau(1) tau(end) -1.0 2.0]); grid;
+   drawnow;
+end
+
+%S.3:
+% C3 code for h3
+u = @(t) 1.0*(t>=0);
+x = @(t) sin(5*t).*(u(t)-u(t-3));
+h = @(t) 4*exp(-t).*(u(t)-u(t-20));
+%B1 modified
+dtau = 0.005;
+tau = 0:dtau:20; ti=0;
+tvec = 0:0.1:20;
+y = NaN*zeros(1,length(tvec));
+for t = tvec,
+   ti = ti+1;
+   xh = x(t-tau).*h(tau);
+   lxh = length(xh);
+   y(ti)= sum(xh.*dtau);
+   %Approximation of convolution integral
+   subplot(2,1,1), plot(tau,h(tau), "k-",tau,x(t-tau),"k--",t,0,"ok")
+   axis([tau(1) tau(end) -2.0 2.5]);
+   patch([tau(1:end-1);tau(1:end-1);tau(2:end);tau(2:end)], ...
+   [zeros(1,lxh-1);xh(1:end-1);xh(2:end);zeros(1,lxh-1)],...
+   [.8 .8 .8], "edgecolor","none");
+   xlabel("\tau"); title("h(\tau) [solid], x(t-\tau) [dashed], " + ...
+       "h(\tau)x(t-\tau) [gray]");
+   c = get(gca, 'children'); set(gca, 'children', [c(2);c(3);c(4);c(1)]);
+   subplot(2,1,2),plot(tvec,y,"k",tvec(ti),y(ti),"ok");
+   xlabel("t"); ylabel("y(t) = \int h(\tau)x(t-\tau) d\tau");
+   axis([tau(1) tau(end) -1.0 2.0]); grid;
+   drawnow;
+end
+
+%S.4:
+% C3 code for h4
+u = @(t) 1.0*(t>=0);
+x = @(t) sin(5*t).*(u(t)-u(t-3));
+h = @(t) 4*(exp(-t/5)-exp(-t)).*(u(t)-u(t-20));
+%B1 modified
+dtau = 0.005;
+tau = 0:dtau:20; ti=0;
+tvec = 0:0.1:20;
+y = NaN*zeros(1,length(tvec));
+for t = tvec,
+   ti = ti+1;
+   xh = x(t-tau).*h(tau);
+   lxh = length(xh);
+   y(ti)= sum(xh.*dtau);
+   %Approximation of convolution integral
+   subplot(2,1,1), plot(tau,h(tau), "k-",tau,x(t-tau),"k--",t,0,"ok")
+   axis([tau(1) tau(end) -2.0 2.5]);
+   patch([tau(1:end-1);tau(1:end-1);tau(2:end);tau(2:end)], ...
+   [zeros(1,lxh-1);xh(1:end-1);xh(2:end);zeros(1,lxh-1)],...
+   [.8 .8 .8], "edgecolor","none");
+   xlabel("\tau"); title("h(\tau) [solid], x(t-\tau) [dashed], " + ...
+       "h(\tau)x(t-\tau) [gray]");
+   c = get(gca, 'children'); set(gca, 'children', [c(2);c(3);c(4);c(1)]);
+   subplot(2,1,2),plot(tvec,y,"k",tvec(ti),y(ti),"ok");
+   xlabel("t"); ylabel("y(t) = \int h(\tau)x(t-\tau) d\tau");
+   axis([tau(1) tau(end) -1.0 2.0]); grid;
+   drawnow;
+end
+
+%I observed that the convolutions were similar to the graph sin(t) with 
+%the duration of the convolution signal being the sum of the duration of 
+%the individual functions themselves. There is a relationship present between all the systems, 
+%notably S2 & S3 have a similar convolution. S2, S3, and S4 convolution clearly displays an eventual decay, 
+%and this makes sense as the roots (eigenvalues) are negative indicating that the system would be stable (BIBO).
+
 
 %D.1
 %put in the calculations (hand or smth)
