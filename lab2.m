@@ -37,6 +37,15 @@ legend('h1', 'h2', 'h3', 'h4');
 %plots all the graphs on the same figure
 hold off;
 
+%C.2
+%Eigenvalues for systems S1 - S4
+
+%S1:  = 1/5
+%S2:  = -1/5
+%S3:  = -1
+%S4: 1 = -1/5,   2 = -1 
+
+
 %D.1
 %put in the calculations (hand or smth)
 
