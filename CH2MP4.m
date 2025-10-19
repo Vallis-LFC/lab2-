@@ -1,3 +1,5 @@
+%B.1
+
 % CH2MP4.m : Chapter 2, MATLAB Program 4
 % Script M-file graphically demonstrates the convolution process.
 figure(1) % Create figure window and make visible on screen
@@ -22,4 +24,5 @@ subplot(2,1,2),plot(tvec,y,'k',tvec(ti),y(ti),'ok');
 xlabel('t'); ylabel('y(t) = \int h(\tau)x(t-\tau) d\tau');
 axis([tau(1) tau(end) -1.0 2.0]); grid;
 pause;
+
 end
